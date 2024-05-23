@@ -3,12 +3,12 @@
 - you can find the dataset at https://www.kaggle.com/c/carvana-image-masking-challenge/data
 
 # Data Structure
-- ensure to store the data in the following format - 
+- ensure that the data is in the following format - 
 ```bash
 ├───data
 │   ├───train_images
 │   ├───train_masks
-│   ├───val_masks
+│   ├───val_images
 │   └───val_masks
 ├───dataset.py
 ├───model.py
