@@ -5,10 +5,11 @@ import torch
 import torch.nn as nn
 import torchvision.transforms.functional as TF
 
-# at every stage of the architecture, we have like two convs + ReLU layers, followed by down-sampling
-# to avoid repetitively forming the two convs every time, let's just create a class for that and use its instance later
+# at every stage of the architecture, we have like two conv layers + ReLU layers, followed by down-sampling
+# to avoid repetitively forming the two conv layers, let's just create a class for that and use its instance later
 
 
+# 2. Double Conv Class
 class DoubleConv(nn.Module):
     def __init__(self, in_channels, out_channels):
         super(DoubleConv, self).__init__()
@@ -26,13 +27,11 @@ class DoubleConv(nn.Module):
         return self.conv(x)
 
 
+# 3. Actual UNET Class
 # keep in mind that we have to also perform the max pooling of (2,2) with stride 2 for the down-sampling (by half) task
 # let's now start defining the class for the overall model
 class UNet(nn.Module):
-    def __init__(self,
-                 in_channels=3,
-                 out_channels=1,
-                 ):
+    def __init__(self, in_channels=3, out_channels=1):
         super(UNet, self).__init__()
         # to store all the down sampling layers, we need a list;
         # but we can't use a simple list, as we need to do model.eval() and batch normalization
@@ -93,6 +92,7 @@ class UNet(nn.Module):
         return self.final_conv(x)
 
 
+# 4. Simple test to check dimensions
 def test():
     x = torch.randn((3, 1, 161, 161))
     model = UNet(1, 1)
