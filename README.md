@@ -17,3 +17,9 @@
 └───saved_images
 ```
 - note that I have only a small proportion of my train images and masks in my val images and masks - 48 of them, to be precise. 
+# Training Results
+- 3 epochs take ~6 hrs
+- After epoch 1 - val Dice score : ```0.9727```, val loss = ```0.187```, val acc = ```98.99```
+- After epoch 2 - val Dice score : ```0.9820```, val loss = ```0.139```, val acc = ```99.35```
+- After epoch 3 - val Dice score : ```0.9811```, val loss = ```0.106```, val acc = ```99.29```
+- We can see that just after 3 epochs, we get some really good results, check out the ```saved_images``` folder to compare ground truth and predicted masks.
